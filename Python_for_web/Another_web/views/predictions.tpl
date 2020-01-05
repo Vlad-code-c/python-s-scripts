@@ -18,8 +18,8 @@
             <h2>Сегодня супер особенный день!</h2>
             % end 
             
-            % for pred in predictions:
-            <p>{{ pred }}</p>       
+            % for pred in predictions: 
+            <p>{{ predictions }}</p>       
             % end 
             
             

@@ -11,6 +11,6 @@ def send_temp(message_chat_id, message_text):
     observation = owm.weather_at_place(message_text)
     w = observation.get_weather()
     temp = w.get_temperature('celsius')["temp"]
-    answ = "In localitatea " + message_text + " sunt " + str(temp) + " grade!" + "\n"
+    answ = "In localitatea " + message_text + " sunt " + str(int(temp)) + " grade!" + "\n"
     answ += "Status: " + w.get_detailed_status() + "\n"
     bot.send_message(message_chat_id, answ)

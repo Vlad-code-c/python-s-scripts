@@ -1,10 +1,14 @@
 import telebot
 from telebot import types
 import bot_temp
+import exchange as exc
+
 
 bot = telebot.TeleBot("994585889:AAFQk9C3JhwrkEwMey_PrkAQbjLnOCYEah8")
 temp_n = "Temperature"
 curs_val = "Curs Valutar"
+mess = ''
+
 #welcome message from /start command
 @bot.message_handler(commands=['start'])
 def start_keyboard(message):
@@ -30,7 +34,10 @@ def temp(message):
          bot.send_message(message.chat.id, "Enter your city: ")
          bot.register_next_step_handler(message, get_city)
      elif message.text == curs_val:
-          bot.send_message(message.chat.id, "This part is under construction")
+          bot.send_message(message.chat.id, "Enter first valute: ")
+          bot.register_next_step_handler(message, get_first_value)
+          bot.send_message(message.chat.id, "Enter second valute: ")
+          bot.register_for_reply(message, get_second_value)
      else:
           bot.send_message(message.chat.id, "Enter a valid option, or type /help")
           #keyboard:
@@ -52,6 +59,12 @@ def get_city(message):
      except:
           bot.send_message(message.chat.id,"Something went wrong!")
           
+def get_first_value(message):
+     print("Test1")
+
+def get_second_value(message):
+     print("test2")
+
      
 
 bot.polling(none_stop = True)

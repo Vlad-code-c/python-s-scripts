@@ -4,10 +4,11 @@ from random import random
 from random_horoscope import generate_prophecies
 
 
-text = 'this is text'
-@get("/api/forecasts")
+text = 'This is text'
+
+@route()
 def get_predictions():
-    text = request.query.predictions
+    text = request("https://api.exchangerate-api.com/v4/latest/USD")
     return text
 
 
@@ -18,7 +19,7 @@ def index():
  
     x = random() 
  
-    predictions = text
+    predictions = get_predictions()
 
 
     return {     
@@ -30,7 +31,7 @@ def index():
  
 run(   
     host="localhost",   
-    port=8888,   
+    port=8880,   
     debug=True,
     autoreload=True 
 )
